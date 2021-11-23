@@ -61,7 +61,7 @@ Model facts:
 
 To reproduce the precalculated embedding use the notebook in `notebooks/QA_retrieval_precalculate_embeddings.ipynb`, with GPU in Google Colab.
 
-Known bug: the precalculated embeddings contain an extra random tensor in the beginning, thus the total size of 466529 (one more than the number of raw sentences). This is corrected by substracting 1 from the index of the most similar embedding, to find the corresponding raw sentence.
+Known bug: the precalculated embeddings contain an extra tensor at the end, which is the empty newline at the end of the text file, this last index should be ignored
 
 ## Search top-k matches
 
