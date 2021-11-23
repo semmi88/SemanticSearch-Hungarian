@@ -31,8 +31,8 @@ dt = datetime.now()
 datetime_formatted = dt.strftime('%Y-%m-%d_%H:%M:%S')
 batch_size = 1000
 
-input_text_file = 'data/processed/shortened_abstracts_hu_2021_09_01.txt'
-output_embeddings_file = f'data/processed/embeddings_{batch_size}_batches_at_{datetime_formatted}.pkl'
+input_text_file = 'data/preprocessed/shortened_abstracts_hu_2021_09_01.txt'
+output_embeddings_file = f'data/preprocessed/embeddings_{batch_size}_batches_at_{datetime_formatted}.pkl'
 
 multilingual_checkpoint = 'sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2'
 tokenizer = AutoTokenizer.from_pretrained(multilingual_checkpoint)

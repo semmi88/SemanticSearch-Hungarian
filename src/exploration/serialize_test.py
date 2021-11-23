@@ -25,6 +25,6 @@ def loadFromDiskRaw(batch_number, filename='embeddings.pkl'):
             count += 1
     return stored_data
 
-output_embeddings_file = 'data/processed/DBpedia_shortened_abstracts_hu_embeddings.pkl'
+output_embeddings_file = 'data/preprocessed/DBpedia_shortened_abstracts_hu_embeddings.pkl'
 loadFromDiskRaw(3, output_embeddings_file)
 

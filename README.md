@@ -1,18 +1,11 @@
 ---
 title: SemanticSearch HU
-
 emoji: 💻
-
 colorFrom: green
-
 colorTo: white
-
 sdk: streamlit
-
 app_file: src/app.py
-
 pinned: false
-
 ---
 
 # Huggingface Course Project - 2021 November

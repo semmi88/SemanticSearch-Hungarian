@@ -34,8 +34,8 @@ multilingual_checkpoint = 'sentence-transformers/paraphrase-multilingual-MiniLM-
 tokenizer = AutoTokenizer.from_pretrained(multilingual_checkpoint)
 model = AutoModel.from_pretrained(multilingual_checkpoint)
 
-raw_text_file = 'data/processed/shortened_abstracts_hu_2021_09_01.txt'
-embeddings_file = 'data/processed/shortened_abstracts_hu_2021_09_01_embedded.pt'
+raw_text_file = 'data/preprocessed/shortened_abstracts_hu_2021_09_01.txt'
+embeddings_file = 'data/preprocessed/shortened_abstracts_hu_2021_09_01_embedded.pt'
 
 all_sentences = load_raw_sentences(raw_text_file)
 all_embeddings = torch.load(embeddings_file,map_location=torch.device('cpu') )

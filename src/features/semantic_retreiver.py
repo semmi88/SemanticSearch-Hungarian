@@ -16,7 +16,7 @@ def mean_pooling(model_output, attention_mask):
 dt = datetime.now()
 datetime_formatted = dt.strftime('%Y-%m-%d_%H:%M:%S')
 batch_size = 1000
-output_embeddings_file = f'data/processed/embeddings_{batch_size}_batches_at_{datetime_formatted}.pkl'
+output_embeddings_file = f'data/preprocessed/embeddings_{batch_size}_batches_at_{datetime_formatted}.pkl'
 def saveToDisc(embeddings):
     with open(output_embeddings_file, "ab") as f:
         pickle.dump(embeddings, f, protocol=pickle.HIGHEST_PROTOCOL)
@@ -75,7 +75,7 @@ multilingual_checkpoint = 'sentence-transformers/paraphrase-multilingual-MiniLM-
 tokenizer = AutoTokenizer.from_pretrained(multilingual_checkpoint)
 model = AutoModel.from_pretrained(multilingual_checkpoint)
 
-raw_text_file = 'data/processed/shortened_abstracts_hu_2021_09_01.txt'
+raw_text_file = 'data/preprocessed/shortened_abstracts_hu_2021_09_01.txt'
 
 
 concated_sentence_embeddings = None
