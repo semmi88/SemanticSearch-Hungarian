@@ -11,7 +11,9 @@ pinned: false
 # Huggingface Course Project - 2021 November
 ## Semantic Search system in Hungarian
 
-This repo contains my course project created during the week of the Huggingface Course Launch Community event. The selected project is a denser retrieval based semantic search system in my own language, Hungarian. It is based on [this question-answering project idea description](https://discuss.huggingface.co/t/build-a-question-answering-system-in-your-own-language/11570/2).
+This repo contains my course project created during the week of the Huggingface Course Launch Community event. The selected project is a dense retrieval based semantic search system in my own language, Hungarian. It is based on [this question-answering project idea description](https://discuss.huggingface.co/t/build-a-question-answering-system-in-your-own-language/11570/2).
+
+**You can try it out at [Huggingface Spaces](https://huggingface.co/spaces/Endre/SemanticSearch-HU)**
 
 ## Approach
 - finding a **dataset** of question/answer pairs or descriptive paragraphs in my target language (Hungarian)
