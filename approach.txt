@@ -1,0 +1,49 @@
+
+Types of Question Answering
+    - extractive question answering (encoder only models BERT)
+        - posing questions about a document and identifying the answers as spans of text in the document itself
+    - generative question answering (encoder-decoder T5/BART)
+        - open ended questions, which need to synthesize information
+    - retrieval based/community question answering 
+
+
+
+First approach - translate dataset, fine-tune model
+!Not really feasible, because it needs lots of human evaluation for correctly determine answer start token
+
+    1. Translate English QA dataset into Hungarian
+        - SQuAD - reading comprehension based on Wikipedia articles
+        - ~ 100.000 question/answers
+    2. Fine-tune a model and evaluate on this dataset
+
+
+Second approach - fine-tune multilingual model
+!MQA format different than SQuAD, cannot use ModelForQuestionAnswering
+
+    1. Use a Hungarian dataset
+        - MQA - multilingual parsed from Common Crawl
+            - FAQ - 878.385 (2.415 domain)
+            - CQA - 27.639 (171 domain)
+    2. Fine-tune and evaluate a model on this dataset
+        
+        
+    Possible steps:
+        - Use an existing pre-trained model in Hungarian/Romanian/or multilingual to generate embeddings
+            - Select Model:
+                - multilingual which includes hu:
+                    - distiluse-base-multilingual-cased-v2 (400MB)
+                    - paraphrase-multilingual-MiniLM-L12-v2 (400MB) - fastest
+                    - paraphrase-multilingual-mpnet-base-v2 (900MB) - best performing
+                - hubert
+        - Select a dataset
+            - use MQA hungarian subset
+            - use hungarian wikipedia pages data, split it up
+                - DBpedia, shortened abstracts = 500.000
+        - Pre-compute embeddings for all answers/paragraphs
+        - Compute embedding for incoming query
+            - Compare similarity between query embedding and precomputed 
+            - return top-3 answers/questions
+    
+    Alternative steps:
+        - train a sentence transformer on the Hungarian / Romanian subsets
+        - Use the trained sentence transformer to generate embeddings
