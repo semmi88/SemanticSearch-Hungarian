@@ -26,7 +26,8 @@ def findTopKMostSimilar(query_embedding, embeddings, all_sentences, k):
     cosine_scores_list = cosine_scores.squeeze().tolist()
     pairs = []
     for idx,score in enumerate(cosine_scores_list):
-        pairs.append({'index': idx, 'score': score, 'text': all_sentences[idx]})
+        if idx < len(all_sentences):
+            pairs.append({'score': score, 'text': all_sentences[idx]})
     pairs = sorted(pairs, key=lambda x: x['score'], reverse=True)
     return pairs[0:k]
 
@@ -49,10 +50,11 @@ embeddings_file = 'data/processed/shortened_abstracts_hu_2021_09_01_embedded.pt'
 all_embeddings = load_embeddings(embeddings_file)
 
 
-st.text('Search Wikipedia abstracts in Hungarian - Input some search term and see the top-5 most similar wikipedia abstracts')
-st.text('Wikipedia absztrakt kereső - adjon meg egy tetszőleges kifejezést és a rendszer visszaadja az 5 hozzá legjobban hasonlító Wikipedia absztraktot')
+st.header('Wikipedia absztrakt kereső')
+st.subheader('Search Wikipedia abstracts in Hungarian')
+st.caption('Input some search term and see the top-5 most similar wikipedia abstracts')
 
-input_query = st.text_area("Hol élnek a bengali tigrisek?")
+input_query = st.text_area("Adjon meg egy tetszőleges kifejezést és a rendszer visszaadja az 5 hozzá legjobban hasonlító Wikipedia absztraktot", value='Hol élnek a bengali tigrisek?')
 
 if input_query:
     query_embedding = calculateEmbeddings([input_query],tokenizer,model)

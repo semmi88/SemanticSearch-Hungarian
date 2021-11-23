@@ -61,6 +61,8 @@ Model facts:
 
 To reproduce the precalculated embedding use the notebook in `notebooks/QA_retrieval_precalculate_embeddings.ipynb`, with GPU in Google Colab.
 
+Known bug: the precalculated embeddings contain an extra random tensor in the beginning, thus the total size of 466529 (one more than the number of raw sentences). This is corrected by substracting 1 from the index of the most similar embedding, to find the corresponding raw sentence.
+
 ## Search top-k matches
 
 Finally, having all precalculated embeddings, we can to implement semantic search (dense retrieval).We encode the search query into vector space and retrieves the document embeddings that are closest in vector space (using cosine similarity). By default the top 5 similar wikipedia abstracts are returned. Can be seen in the main script `src/main_qa.py`.
