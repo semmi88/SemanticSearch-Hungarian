@@ -15,6 +15,8 @@ This repo contains my course project created during the week of the Huggingface 
 
 **You can try it out at [Huggingface Spaces](https://huggingface.co/spaces/Endre/SemanticSearch-HU)**
 
+![alt text](huggingface_cert.png  "Cover")
+
 ## Approach
 - finding a **dataset** of question/answer pairs or descriptive paragraphs in my target language (Hungarian)
 - using a **pretrained model** (Hungarian or multilingual) to generate embeddings for all answers, preferably using sentence-transformers
